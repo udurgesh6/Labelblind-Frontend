@@ -11,13 +11,14 @@ const Scrape: React.FC = () => {
         alert('Data scraped successfully');
         setUrl('');
       })
-      .catch(() => alert('Some error occurred while scraping the data'));
+      .catch(() => alert('Data will be available in sometime'));
   };
 
   useEffect(() => {
     axios
       .get('https://labelblind-backend.vercel.app/data')
-      .then(resp => setData(resp.data));
+      .then(resp => setData(resp.data))
+      .catch(() => {});
   }, []);
 
   const handleUrlChange = (e: ChangeEvent<HTMLInputElement>) => {
